@@ -1,0 +1,36 @@
+[tool.poetry]
+name = "awblib"
+version = "0.0.1"
+description = "A bunch of Automatic White-Balancing (AWB) Algorithm implementations"
+authors = ["Joey Teng <joey.teng.dev@gmail.com>"]
+license = "Apache-2.0"
+readme = "README.md"
+homepage = "https://github.com/JoeyTeng/AWB-Lib"
+repository = "https://github.com/JoeyTeng/AWB-Lib"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+jax = "^0.4.0"
+jaxlib = {version = "^0.4.0", source = "jax"}
+jaxtyping = [
+    {version = ">=0.2.13,<0.2.20", python = ">=3.8,<3.9"},
+    {version = "^0.2.19", python = "^3.9"}
+]
+numpy = "^1.22.0"
+typing_extensions = "^4.3.0"
+
+[tool.poetry.group.dev.dependencies]
+matplotlib = "^3.6.2"
+pillow = "^9.4.0"
+
+[[tool.poetry.source]]
+name = "jax"
+url = "https://storage.googleapis.com/jax-releases/jax_releases.html"
+priority = "explicit"
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/JoeyTeng/AWB-Lib/issues"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
