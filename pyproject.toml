@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "awblib"
-version = "0.0.1"
+version = "0.0.2"
 description = "A bunch of Automatic White-Balancing (AWB) Algorithm implementations"
 authors = ["Joey Teng <joey.teng.dev@gmail.com>"]
 license = "Apache-2.0"
