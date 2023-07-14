@@ -19,7 +19,7 @@ You may check the comments in the implementation file for the details.
 3. For Section 3.2 CRITERIA I Step 2, we assume $K$ is a scalar constant, being the same across all channels and the whole image.
 4. For Section 3.2 CRITERIA II Step 1, the author claims that the dynamic range is 0-127, which might be wrong. Think about an image with only few pixels being 255 in the selected channel, and all other values are near 0.
 5. For Section 3.2 CRITERIA II Step 2, experiments (use `gen_comparison.py` in this folder) shows that the selection criteria is wrong. Our best and closest results are obtained by always choosing the channel with sum (or mean) intensities being the middle of the three, if the average intensity of the image falls below half gray (127 for 8-bit image).
-6. For Section 3.2 CRITERIA II, we assume that "channel with minimum intensity" means the channel with the sum (mean) intensities of that channel over all pixels in the image is the minimum among the three. I.e., $\argmin_{c\in\{R, G, B\}} \sum_{x, y} I_{c, (x,y)}$, where $I_{c, (x,y)}$ is the intensity of the pixel at $(x, y)$ of channel $c$.
+6. For Section 3.2 CRITERIA II, we assume that "channel with minimum intensity" means the channel with the sum (mean) intensities of that channel over all pixels in the image is the minimum among the three. I.e., $\textrm{argmin}_{c\in\{R, G, B\}} \sum_{x, y} I_{c, (x,y)}$, where $I_{c, (x,y)}$ is the intensity of the pixel at $(x, y)$ of channel $c$.
 
 ## Evaluation on Performance
 
