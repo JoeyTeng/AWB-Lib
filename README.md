@@ -1,5 +1,7 @@
 # AWB-Lib
 
+[![Smoke Test](https://github.com/JoeyTeng/AWB-Lib/actions/workflows/smoke_test.yml/badge.svg)](https://github.com/JoeyTeng/AWB-Lib/actions/workflows/smoke_test.yml)
+
 Implementation of a bunch of Automatic White-Balancing (AWBE algorithms), using JAX. Comparisons and experiments can be found in `docs` folder.
 
 ## Implemented Algorithms
