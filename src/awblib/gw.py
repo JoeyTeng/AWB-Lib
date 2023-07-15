@@ -10,16 +10,15 @@
 from __future__ import annotations  # for compatibility with Python 3.8
 
 from functools import partial
-from typing import Optional
 
 import jax
-import jax.numpy as jnp
-from jaxtyping import Array, Float, Integer
+from jaxtyping import Array, Float, Integer, jaxtyped
 from typing_extensions import TypeAlias
 
 RGBImage: TypeAlias = Integer[Array, "height width 3"]
 
 
+@jaxtyped
 @partial(
     jax.jit,
     inline=True,
@@ -38,6 +37,7 @@ def original_gw(image: RGBImage) -> RGBImage:
     return result
 
 
+@jaxtyped
 @partial(
     jax.jit,
     inline=True,
