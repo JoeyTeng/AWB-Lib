@@ -17,8 +17,8 @@ import jax
 import jax.numpy as jnp
 from jaxtyping import Array, Float, Integer
 from typing_extensions import TypeAlias
-from awblib.chs import modified_chs
 
+from awblib.chs import modified_chs
 from awblib.gw import modified_gw
 
 RGBImage: TypeAlias = Integer[Array, "height width 3"]
