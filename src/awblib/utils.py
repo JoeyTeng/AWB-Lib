@@ -2,9 +2,9 @@ from __future__ import annotations  # for compatibility with Python 3.8
 
 from typing import Optional
 
+from PIL import Image
 import matplotlib.pyplot as plt
 import numpy as np
-from PIL import Image
 
 
 def load_image(path: str) -> np.ndarray:
