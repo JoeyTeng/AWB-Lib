@@ -11,11 +11,10 @@
 from __future__ import annotations  # for compatibility with Python 3.8
 
 from functools import partial
-from typing import Optional
 
 import jax
 import jax.numpy as jnp
-from jaxtyping import Array, Float, Integer
+from jaxtyping import Array, Float, Integer, jaxtyped
 from typing_extensions import TypeAlias
 
 from awblib.chs import modified_chs
@@ -24,6 +23,7 @@ from awblib.gw import modified_gw
 RGBImage: TypeAlias = Integer[Array, "height width 3"]
 
 
+@jaxtyped
 @partial(
     jax.jit,
     inline=True,
@@ -52,6 +52,7 @@ def _convert_to_YCbCr(
     return result
 
 
+@jaxtyped
 @partial(
     jax.jit,
     inline=True,
@@ -87,6 +88,7 @@ def _weight(
     return weight
 
 
+@jaxtyped
 @partial(
     jax.jit,
     inline=True,

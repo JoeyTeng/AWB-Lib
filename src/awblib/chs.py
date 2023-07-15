@@ -14,12 +14,13 @@ from typing import Optional
 
 import jax
 import jax.numpy as jnp
-from jaxtyping import Array, Float, Integer
+from jaxtyping import Array, Integer, jaxtyped
 from typing_extensions import TypeAlias
 
 RGBImage: TypeAlias = Integer[Array, "height width 3"]
 
 
+@jaxtyped
 @partial(
     jax.jit,
     inline=True,
@@ -101,6 +102,7 @@ def original_chs(
     return result
 
 
+@jaxtyped
 @partial(
     jax.jit,
     inline=True,
@@ -175,6 +177,7 @@ def modified_chs(
     return result
 
 
+@jaxtyped
 @partial(
     jax.jit,
     inline=True,

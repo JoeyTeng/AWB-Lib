@@ -9,7 +9,7 @@ from functools import partial
 
 import jax
 import jax.numpy as jnp
-from jaxtyping import Array, Float, Integer
+from jaxtyping import Array, Float, Integer, jaxtyped
 from typing_extensions import TypeAlias
 
 RGBImage: TypeAlias = Integer[Array, "height width 3"]
@@ -17,6 +17,7 @@ Index: TypeAlias = Integer[Array, ""]
 Coef: TypeAlias = Float[Array, ""]
 
 
+@jaxtyped
 @partial(
     jax.jit,
     static_argnames=("bit_depth", ),
