@@ -87,10 +87,15 @@ def original_chs(
     )
     assert isinstance(high, Integer[Array, "3"])
 
+    _max: Integer[Array, "3"] = RGB_range[:, 1].astype(int)
+    _min: Integer[Array, "3"] = RGB_range[:, 0].astype(int)
+    assert isinstance(_max, Integer[Array, "3"])
+    assert isinstance(_min, Integer[Array, "3"])
+
     # STAGE: Histogram Stretching
     result: RGBImage
-    result = ((image - low) * (RGB_range[:, 1]) / (high - low) +
-              RGB_range[:, 0]).astype(int)
+    result = ((image - low) * _max / (high - low) + _min).astype(int)
+    result = jnp.clip(result, a_min=0, a_max=max_value - 1).astype(int)
     assert isinstance(result, RGBImage)
 
     return result
@@ -156,14 +161,15 @@ def modified_chs(
     )
     assert isinstance(high, Integer[Array, "3"])
 
-    a_max: Integer[Array, ""] = high.max()  # A_max
-    a_min: Integer[Array, ""] = low.min()  # A_min
+    a_max: Integer[Array, ""] = high.max().astype(int)  # A_max
+    a_min: Integer[Array, ""] = low.min().astype(int)  # A_min
     assert isinstance(a_max, Integer[Array, ""])
     assert isinstance(a_min, Integer[Array, ""])
 
     # STAGE: Histogram Stretching
     result: RGBImage
-    result = ((image - low) * (a_max) / (high - low) + a_min).astype(int)
+    result = ((image - low) * a_max / (high - low) + a_min).astype(int)
+    result = jnp.clip(result, a_min=0, a_max=max_value - 1).astype(int)
     assert isinstance(result, RGBImage)
 
     return result
@@ -184,7 +190,7 @@ def balance(
 
     result: RGBImage
     if modified:
-        result = modified_chs(image)
+        result = modified_chs(image, bit_depth=bit_depth)
     else:
         result = original_chs(image, bit_depth=bit_depth, RGB_range=RGB_range)
     assert isinstance(result, RGBImage)
