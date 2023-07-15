@@ -13,6 +13,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    env:
+      CODE_DIRECTORIES: "src tests docs"
     strategy:
       fail-fast: false
       matrix:
@@ -29,10 +31,14 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install --upgrade poetry
         python -m pip install --upgrade yapf
+        python -m pip install --upgrade isort
         python -m poetry install
     - name: Lint with yapf
       run: |
-        yapf --diff -recursive --parallel src docs
-    - name: Generate example report image
+        yapf --diff -recursive --parallel $CODE_DIRECTORIES
+    - name: Lint with isort
       run: |
-        cd docs && python gen_comparison.py
+        isort --check-only --combine-star --order-by-type --use-parentheses --case-sensitive --force-sort-within-sections $CODE_DIRECTORIES
+    - name: Run smoke test
+      run: |
+        cd tests && poetry run python smoke_test.py
